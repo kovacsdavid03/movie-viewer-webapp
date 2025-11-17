@@ -12,13 +12,17 @@ import { createProductionCompanyModel } from './models/ProductionCompany';
 import { createProductionCountryModel } from './models/ProductionCountry';
 import { createSpokenLanguageModel } from './models/SpokenLanguage';
 
+// Get database name from environment variables
+const databaseName = process.env.DB_NAME || 'ONLAB';
+const connectionString = `Driver={ODBC Driver 17 for SQL Server};Server=(LocalDB)\\MSSQLLocalDB;Database=${databaseName};Trusted_Connection=yes;`;
+
 const sequelize = new Sequelize({
   dialect: 'mssql',
   dialectModule: msnodesqlv8Sequelize,
   logging: false,
   dialectOptions: {
     options: {
-      connectionString: 'Driver={ODBC Driver 17 for SQL Server};Server=(LocalDB)\\MSSQLLocalDB;Database=ONLAB;Trusted_Connection=yes;',
+      connectionString,
     },
   },
   define: {

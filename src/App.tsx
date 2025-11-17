@@ -2,13 +2,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
-import { Movie as MovieIcon, Favorite as FavoriteIcon, Logout as LogoutIcon, Login as LoginIcon, PersonAdd as RegisterIcon, Add as AddIcon } from '@mui/icons-material';
+import { Movie as MovieIcon, Favorite as FavoriteIcon, Logout as LogoutIcon, Login as LoginIcon, PersonAdd as RegisterIcon, Add as AddIcon, Recommend as RecommendIcon } from '@mui/icons-material';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import MovieDetails from './pages/MovieDetails';
 import MovieImport from './pages/MovieImport';
+import Recommended from './pages/Recommended';
 import './App.css';
 
 function App() {
@@ -80,6 +81,15 @@ function AppContent() {
                 <Button
                   color="inherit"
                   component={Link}
+                  to="/recommended"
+                  startIcon={<RecommendIcon />}
+                  sx={{ '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
+                >
+                  Recommended
+                </Button>
+                <Button
+                  color="inherit"
+                  component={Link}
                   to="/import"
                   startIcon={<AddIcon />}
                   sx={{ '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
@@ -105,6 +115,7 @@ function AppContent() {
           <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
           <Route path="/favourites" element={<Favorites />} />
+          <Route path="/recommended" element={<Recommended />} />
           <Route path="/import" element={<MovieImport />} />
           <Route path="/movie/:movieId" element={<MovieDetails />} />
           <Route path="*" element={<Login />} />

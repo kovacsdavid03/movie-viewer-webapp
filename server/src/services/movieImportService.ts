@@ -371,6 +371,7 @@ export class MovieImportService {
             movieId,
             name: castMember.name,
             character: castMember.character || null,
+            gender: castMember.gender || null, // TMDB gender codes: 0=unspecified, 1=female, 2=male, 3=non-binary
             order: castMember.order || 0
           }, { transaction })
         );
@@ -384,7 +385,8 @@ export class MovieImportService {
             movieId,
             name: crewMember.name,
             job: crewMember.job || null,
-            department: crewMember.department || null
+            department: crewMember.department || null,
+            gender: crewMember.gender || null // TMDB gender codes: 0=unspecified, 1=female, 2=male, 3=non-binary
           }, { transaction })
         );
         await Promise.all(crewPromises);
